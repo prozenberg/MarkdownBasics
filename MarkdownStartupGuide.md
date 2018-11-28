@@ -22,24 +22,31 @@ To write in Markdown we will be using Visual Studio Code, since the software is 
 If you don't have Visual Studio Code installed in your computer, you can download it from _[here](https://code.visualstudio.com/)_ And follow the instructions below. You should be redirected to the following page:
 
 1. You will be redirected to the following page, download the installer:
+
 ![VisualStudioDownload](sources/VisualStudioDownload.png)
 
 2. After the download is complete, execute the installer and click _Next_
+
 ![VisualStudioCodeWizard1](sources/VisualStudioCodeWizard1.png)
 
 3. Accept the terms and click _Next_
+
 ![VisualStudioCodeWizard2](sources/VisualStudioCodeWizard2.png)
 
 4. __Make sure the installation is taking place in the 'AppData' folder for your user__ (prozenberg, in this case) and click _Next_
+
 ![VisualStudioCodeWizard3](sources/VisualStudioCodeWizard3.png)
 
 5. Click _Next_
+
 ![VisualStudioCodeWizard4](sources/VisualStudioCodeWizard4.png)
 
 6. Check option as you desire and click _Next_
+
 ![VisualStudioCodeWizard5](sources/VisualStudioCodeWizard5.png)
 
 7. Click _Install_
+
 ![VisualStudioCodeWizard6](sources/VisualStudioCodeWizard6.png)
 
 ### Setting up Visual Studio Code
@@ -90,6 +97,4 @@ Select _'Markdown PDF: Export (pdf)'_. The PDF file will automatically appear in
 
 Everything you can learn about Markdown can be found in this _[link](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#emphasis)_
 
-For a Markdown example, this PDF's Markdown code is attached below:
-
-![MarkdownExample](./MarkdownStartupGuide.md)
+For a Markdown example, this PDF's Markdown code can be found _[here](https://raw.githubusercontent.com/prozenberg/MarkdownBasics/master/MarkdownStartupGuide.md)_

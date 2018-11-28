@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MarkdownStartupGuide.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<h1 id="markdown-startup-guide">Markdown startup guide</h1>
+<ol>
+<li>Purpose of the document</li>
+<li>What is Markdown?</li>
+<li>Setting up for markdown</li>
+<li>How to write Markdown</li>
+</ol>
+<h2 id="purpose-of-the-document">Purpose of the document</h2>
+<p>This document will be used to explain how to setup a local environment to write documents in markdown and the basics of the language.</p>
+<h2 id="what-is-markdown">What is Markdown?</h2>
+<p>Markdown is a markup language, this means that whatever we write in the file will be interpreted and translated to HTML with a certain style and/or format, this means that we will have to learn a few in-line commands to get the document as we want it.</p>
+<p>It offers a unified way to write and document files in an extremely simple way, and if we add third party tools it can be even easier to write and to export files to PDF or other formats besides HTML.</p>
+<h2 id="setting-up-for-markdown">Setting up for markdown</h2>
+<p>To write in Markdown we will be using Visual Studio Code, since the software is not bound to any licenses, has a wide availability of extensions that will make things easier and it's installation doesn't require elevated privileges.</p>
+<h3 id="visual-studio-code-installation">Visual Studio Code Installation</h3>
+<p>If you don't have Visual Studio Code installed in your computer, you can download it from <em><a href="https://code.visualstudio.com/">here</a></em> And follow the instructions below. You should be redirected to the following page:</p>
+<ol>
+<li>You will be redirected to the following page, download the installer:</li>
+</ol>
+<p><img src="file:///c:/Users/prozenberg/Desktop/RPA Documentation/sources/VisualStudioDownload.png" alt="VisualStudioDownload"></p>
+<ol start="2">
+<li>After the download is complete, execute the installer and click <em>Next</em></li>
+</ol>
+<p><img src="file:///c:/Users/prozenberg/Desktop/RPA Documentation/sources/VisualStudioCodeWizard1.png" alt="VisualStudioCodeWizard1"></p>
+<ol start="3">
+<li>Accept the terms and click <em>Next</em></li>
+</ol>
+<p><img src="file:///c:/Users/prozenberg/Desktop/RPA Documentation/sources/VisualStudioCodeWizard2.png" alt="VisualStudioCodeWizard2"></p>
+<ol start="4">
+<li><strong>Make sure the installation is taking place in the 'AppData' folder for your user</strong> (prozenberg, in this case) and click <em>Next</em></li>
+</ol>
+<p><img src="file:///c:/Users/prozenberg/Desktop/RPA Documentation/sources/VisualStudioCodeWizard3.png" alt="VisualStudioCodeWizard3"></p>
+<ol start="5">
+<li>Click <em>Next</em></li>
+</ol>
+<p><img src="file:///c:/Users/prozenberg/Desktop/RPA Documentation/sources/VisualStudioCodeWizard4.png" alt="VisualStudioCodeWizard4"></p>
+<ol start="6">
+<li>Check option as you desire and click <em>Next</em></li>
+</ol>
+<p><img src="file:///c:/Users/prozenberg/Desktop/RPA Documentation/sources/VisualStudioCodeWizard5.png" alt="VisualStudioCodeWizard5"></p>
+<ol start="7">
+<li>Click <em>Install</em></li>
+</ol>
+<p><img src="file:///c:/Users/prozenberg/Desktop/RPA Documentation/sources/VisualStudioCodeWizard6.png" alt="VisualStudioCodeWizard6"></p>
+<h3 id="setting-up-visual-studio-code">Setting up Visual Studio Code</h3>
+<p>Once the installation is complete, jump to <em>Visual Studio Code</em>. Close the several windows that automatically open and click on the extensions tab (highlighted below):</p>
+<p><img src="file:///c:/Users/prozenberg/Desktop/RPA Documentation/sources/VisualStudioCode1.png" alt="VisualStudioCode2"></p>
+<p>In this place you can download extensions for every programming language. For now, we will focus on the ones we will be using for Markdown.</p>
+<p>To find them, type markdown in the searchbar as shown below:</p>
+<p><img src="file:///c:/Users/prozenberg/Desktop/RPA Documentation/sources/VisualStudioCode2.png" alt="VisualStudioCode3"></p>
+<p>You will want to install <em>Markdown All in One</em> and <em>Markdown PDF</em>. The first one offers a live preview of the document we're writing and a few shortcuts to make development easier; the second one will let us export our document to PDF and other several formats.</p>
+<p>More extensions and tools exist, but for now we will only be using these ones.</p>
+<p>Click <em>reload</em> after installing both.</p>
+<p>Go to <em>File</em> and create a new one, or hit <em>CTRL+N</em>. The first thing we will have to do is make sure our file is being written in markdown.</p>
+<p>For this, click the area highlighted below:</p>
+<p><img src="file:///c:/Users/prozenberg/Desktop/RPA Documentation/sources/VisualStudioCode4.png" alt="VisualStudioCode4"></p>
+<p>A modal will show up, write markdown and click the only available option. An installation of Chromium may begin:</p>
+<p><img src="file:///c:/Users/prozenberg/Desktop/RPA Documentation/sources/VisualStudioCode5.png" alt="VisualStudioCode5"></p>
+<p>Let it finish before saving your file, then hit <em>CTRL+SHIFT+V</em>. This will open the live preview for our Markdown document.</p>
+<p>You can move it to the side to have both tabs open, like this:</p>
+<p><img src="file:///c:/Users/prozenberg/Desktop/RPA Documentation/sources/VisualStudioCode6.png" alt="VisualStudioCode6"></p>
+<p>Type '# Hello World' to see the results:</p>
+<p><img src="file:///c:/Users/prozenberg/Desktop/RPA Documentation/sources/VisualStudioCode7.png" alt="VisualStudioCode7"></p>
+<p>The last step is to export our file as a PDF. For this, hit <em>CTRL+SHIFT+P</em>. Type <em>'export'</em> and a number of options will appear:</p>
+<p><img src="file:///c:/Users/prozenberg/Desktop/RPA Documentation/sources/VisualStudioCode8.png" alt="VisualStudioCode8"></p>
+<p>Select <em>'Markdown PDF: Export (pdf)'</em>. The PDF file will automatically appear in the folder where the markdown file is saved.</p>
+<h2 id="how-to-wirte-markdown">How to wirte Markdown</h2>
+<p>Everything you can learn about Markdown can be found in this <em><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#emphasis">link</a></em></p>
+<p>For a Markdown example, this PDF's Markdown code can be found <em><a href="https://raw.githubusercontent.com/prozenberg/MarkdownBasics/master/MarkdownStartupGuide.md">here</a></em></p>
+
+</body>
+</html>
